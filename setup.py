@@ -19,7 +19,9 @@ setup(
     install_requires=[
         "numpy~=1.22.1",
         "matplotlib~=3.5.1"
-    ]
+    ],
 
-    # url=""
+    url="https://github.com/dor-miron/afori_utils",
+    author="Dor Miron",
+    author_email="dor00012@gmail.com"
 )
