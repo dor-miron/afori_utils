@@ -10,7 +10,7 @@ from typing import Dict
 from time import time
 import time
 from functools import partial
-from debug_utils import LineTimer
+from .debug_utils import LineTimer
 
 
 class PeriodicTask(Thread):

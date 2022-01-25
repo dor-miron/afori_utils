@@ -6,13 +6,11 @@ import numpy as np
 
 
 class StatsAgg:
-    def __init__(self, stat_name_list=(), maxlen=None, sig_digits=3):
-        self.stat_name_list = stat_name_list
+    def __init__(self, maxlen=None, sig_digits=3):
         self.maxlen = maxlen
         self.sig_digits = sig_digits
 
         self.stats_dict = defaultdict(partial(deque, maxlen=maxlen))
-        self.clear()
 
     def __getitem__(self, item):
         return self.stats_dict[item]
@@ -75,8 +73,13 @@ class StatsAgg:
         self.stats_dict[stat_name].append(info)
 
     def clear(self):
-        for stat_name in self.stat_name_list:
-            self.stats_dict[stat_name] = deque(maxlen=self.maxlen)
+        self.stats_dict.clear()
+
+    def __str__(self):
+        to_print = ''
+        for stat, stat_deque in self.stats_dict.items():
+            to_print += f'{stat}: {stat_deque}\n'
+        return to_print
 
 
 class TimesAgg(StatsAgg):
@@ -95,11 +98,13 @@ class TimesAgg(StatsAgg):
     def __exit__(self, exc_type, exc_val, exc_tb):
         key = self.key_lifo.pop()
         start_time = self.time_lifo.pop()
-        self[key].append(time.time() - start_time)
+        block_time = np.round(time.time() - start_time, self.sig_digits)
+        self[key].append(block_time)
 
 
 class LineTimer:
     """ One line, simple timer"""
+
     def __init__(self):
         self.start_time = None
         self.is_working = False

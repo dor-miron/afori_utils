@@ -1,3 +1,3 @@
-import debug_utils
-import pyplot_utils
-import sync_utils
+from . import debug_utils
+from . import pyplot_utils
+from . import sync_utils

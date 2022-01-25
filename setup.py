@@ -1,11 +1,12 @@
 from setuptools import setup
 
+
 with open("README.md", 'r') as fh:
     long_description = fh.read()
 
 setup(
     name='afori-utils',
-    version='1.0.1',
+    version='1.1.0',
     description='Some utils by Dor Miron',
     package_dir={'afori_utils': 'afori_utils'},
     packages=['afori_utils'],
