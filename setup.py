@@ -1,15 +1,14 @@
 from setuptools import setup
-import afori_utils
 
 with open("README.md", 'r') as fh:
     long_description = fh.read()
 
 setup(
     name='afori-utils',
-    version='1.0.0',
+    version='1.0.1',
     description='Some utils by Dor Miron',
-    package_dir={'': 'afori_utils'},
-    packages=[''],
+    package_dir={'afori_utils': 'afori_utils'},
+    packages=['afori_utils'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License (GPL)"
@@ -21,6 +20,7 @@ setup(
         "numpy>=1.20",
         "matplotlib>=3.4"
     ],
+    license='LICENSE.txt',
 
     url="https://github.com/dor-miron/afori_utils",
     author="Dor Miron",
